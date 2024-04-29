@@ -1,0 +1,178 @@
+main {
+  min-height: calc(100vh - 112px);
+}
+
+.hero {
+  min-height: 450px;
+  background-color: #03a9f4;
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: 60px;
+  margin-right: 10px;
+}
+.logo:hover {
+  transform: none;
+}
+
+.book-card .card-img-top {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.book-card .card-img-top:hover {
+  transform: scale(1.04);
+}
+
+.book-card.card {
+  display: inline-block;
+  width: 150px;
+  flex: 0 0 150px;
+  margin-right: 15px;
+  vertical-align: top;
+  padding: 10px;
+  border: none;
+  background-color: transparent;
+}
+
+.book-card:hover {
+  cursor: pointer;
+  background-color: #cff4fc;
+  border: none;
+}
+
+.book-card .card-title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  text-align: start;
+  margin-block: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+.book-card .card-body {
+  padding: 0;
+}
+
+.card-text {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+h5 {
+  font-weight: 700;
+}
+img:hover {
+  transform: scale(1.1);
+}
+
+/* card rows */
+.horizontal-scroll {
+  display: flex;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scroll-behavior: smooth;
+  white-space: nowrap;
+  padding: 20px 0;
+  position: relative;
+  margin: 0 -30px;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll-container {
+  position: relative;
+  width: 100%;
+  padding: 0 40px;
+}
+
+.arrow-button {
+  background: none;
+  border: none;
+  padding: 0;
+  position: absolute;
+  top: 40%;
+  cursor: pointer;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.668);
+  border-radius: 50%;
+}
+.arrow-button:hover {
+  background-color: white;
+}
+.arrow-button.left {
+  left: 0;
+}
+.arrow-button.right {
+  right: 0;
+}
+
+/* single book */
+.single-book .card-img-top {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+.single-book .card-img-top:hover {
+  transform: scale(1.04);
+}
+.single-book.book-card:hover {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.single-book.book-card .card-title {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: normal;
+  text-overflow: ellipsis;
+  margin-block: 10px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.single-book.book-card.card {
+  width: 220px;
+  min-height: 369px;
+  background-color: rgb(28, 28, 28);
+  flex: none;
+}
+
+#searchTerm.custom-form-control.form-control {
+  border-radius: 75px;
+  border: 2px solid transparent;
+  background-color: rgb(28, 28, 28);
+  color: #fff;
+}
+#searchTerm.custom-form-control.form-control:focus {
+  box-shadow: none;
+  border: 2px solid #fff;
+}
+#searchTerm.custom-form-control.form-control::placeholder {
+  color: #fff;
+  font-weight: 600;
+}
+
+.light-toggle-btn .btn-check:checked + .btn {
+  background-color: #ff5722 !important;
+}
