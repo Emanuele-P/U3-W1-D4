@@ -1,5 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import ListGroup from 'react-bootstrap/ListGroup'
+import SingleComment from './SingleComment' // Assuming SingleComment is in the same directory
 
 function BookModal({ show, onHide, book, comments, handleShowCommentModal }) {
   if (!show) return null
@@ -18,12 +20,11 @@ function BookModal({ show, onHide, book, comments, handleShowCommentModal }) {
 
         <Modal.Body>
           {comments.length > 0 ? (
-            comments.map((comment, index) => (
-              <div key={index}>
-                <p>{comment.comment}</p>
-                <hr />
-              </div>
-            ))
+            <ListGroup>
+              {comments.map((comment, index) => (
+                <SingleComment key={index} comment={comment} />
+              ))}
+            </ListGroup>
           ) : (
             <p>No comments available.</p>
           )}

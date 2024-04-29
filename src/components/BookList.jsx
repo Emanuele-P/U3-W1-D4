@@ -56,8 +56,6 @@ class BookList extends Component {
   }
 
   fetchComments = () => {
-    if (!this.state.selectedBookAsin) return console.log('No book is selected')
-
     const URL = `https://striveschool-api.herokuapp.com/api/comments/${this.state.selectedBookAsin}`
     const API_KEY =
       'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NjE4ZWFkNzdmMzA0NjAwMWFlNTlmNmIiLCJpYXQiOjE3MTQzOTU2NzIsImV4cCI6MTcxNTYwNTI3Mn0.yfjMncpvzwOYpP_vBTE0BmCHEdXvANwDaV06LcyBt3o'
@@ -79,11 +77,12 @@ class BookList extends Component {
         }
       })
       .then((comments) => {
-        if (comments.length === 0) {
-          console.log('There are no comments for this book')
-        } else {
+        if (comments && comments.length > 0) {
           this.setState({ comments })
           console.log('Fetched comments:', comments)
+        } else {
+          this.setState({ comments: [] })
+          console.log('There are no comments for this book')
         }
       })
       .catch((error) => {
@@ -137,12 +136,12 @@ class BookList extends Component {
           onHide={() => this.handleBookSelect(null)}
           book={selectedBook}
           comments={this.state.comments}
-          addComment={this.handleShowCommentModal}
+          handleShowCommentModal={this.handleShowCommentModal}
         />
         <CommentModal
-          // addComment={={this.handleAddComment}
           show={showCommentModal}
           onHide={this.handleCloseCommentModal}
+          selectedBookAsin={selectedBookAsin}
         />
       </Container>
     )
