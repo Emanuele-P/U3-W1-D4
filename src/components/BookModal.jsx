@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
-function BookModal({ show, hide, book, comments }) {
+function BookModal({ show, onHide, book, comments, handleShowCommentModal }) {
   if (!show) return null
 
   return (
@@ -9,7 +9,6 @@ function BookModal({ show, hide, book, comments }) {
       className="modal show"
       style={{ display: 'block', position: 'initial' }}
     >
-      {/* <Modal show={show} onHide={hide} backdrop="static" keyboard={false}></Modal> */}
       <Modal.Dialog>
         <Modal.Header>
           <Modal.Title className="fs-4">
@@ -30,10 +29,12 @@ function BookModal({ show, hide, book, comments }) {
           )}
 
           <div className="d-flex align-items-center justify-content-end gap-3 mt-4">
-            <Button variant="outline-secondary" onClick={hide}>
+            <Button variant="outline-secondary" onClick={onHide}>
               Close
             </Button>
-            <Button variant="info">Save changes</Button>
+            <Button variant="info" onClick={handleShowCommentModal}>
+              Leave a comment
+            </Button>
           </div>
         </Modal.Body>
       </Modal.Dialog>

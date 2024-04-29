@@ -8,6 +8,7 @@ import history from '../data/books/history.json'
 import scifi from '../data/books/scifi.json'
 import horror from '../data/books/horror.json'
 import BookModal from './BookModal'
+import CommentModal from './CommentModal'
 
 class BookList extends Component {
   state = {
@@ -15,6 +16,7 @@ class BookList extends Component {
     booksData: [...fantasy, ...romance, ...history, ...scifi, ...horror],
     selectedBookAsin: null,
     comments: [],
+    showCommentModal: false,
   }
 
   scrollRef = React.createRef()
@@ -43,6 +45,14 @@ class BookList extends Component {
       6: horror,
     }
     this.setState({ booksData: genreMap[genre] || [] })
+  }
+
+  handleShowCommentModal = () => {
+    this.setState({ showCommentModal: true })
+  }
+
+  handleCloseCommentModal = () => {
+    this.setState({ showCommentModal: false })
   }
 
   fetchComments = () => {
@@ -82,7 +92,8 @@ class BookList extends Component {
   }
 
   render() {
-    const { searchTerm, booksData, selectedBookAsin } = this.state
+    const { searchTerm, booksData, selectedBookAsin, showCommentModal } =
+      this.state
     const filteredBooks = booksData.filter((book) =>
       book.title.toLowerCase().includes(searchTerm.toLowerCase())
     )
@@ -123,9 +134,15 @@ class BookList extends Component {
         </div>
         <BookModal
           show={this.state.selectedBookAsin !== null}
-          hide={() => this.handleBookSelect(null)}
+          onHide={() => this.handleBookSelect(null)}
           book={selectedBook}
           comments={this.state.comments}
+          addComment={this.handleShowCommentModal}
+        />
+        <CommentModal
+          // addComment={={this.handleAddComment}
+          show={showCommentModal}
+          onHide={this.handleCloseCommentModal}
         />
       </Container>
     )
